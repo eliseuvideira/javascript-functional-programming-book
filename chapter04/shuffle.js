@@ -11,6 +11,6 @@ const shuffle = (arr) => {
 const items = [10, 20, 122, 235, 887, 1204];
 shuffle(items);
 
-console.log(items);
+// console.log(items);
 
 module.exports = shuffle;
