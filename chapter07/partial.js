@@ -54,4 +54,34 @@ const fetch = require('node-fetch')
 
   console.log(fix2And52.toString())
   console.log(fix2And52(1, 2, 3))
+
+  const partialByClosure = (fn, ...args) => {
+    const partialize = (...args1) => (...args2) => {
+      let params1 = [...args1];
+      let params2 = [...args2];      
+      let i
+      for (i = 0; i < args.length && params2.length; i += 1) {
+        if (params1[i] === undefined) {
+          params1[i] = params2.shift()
+        }
+      }
+      const params = [...params1, ...params2]
+      return params.includes(undefined) || params.length < fn.length
+        ? partialize(...params)
+        : fn(...params)
+    }
+    return partialize(...args)
+  }
+
+  const fix2And53 = partialByClosure(
+    nonsense,
+    undefined,
+    22,
+    undefined,
+    undefined,
+    1960,
+  )
+
+  console.log(fix2And53(1, 2, 3))
+  console.log(fix2And53(1, 2)(3))
 })()
