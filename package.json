@@ -15,5 +15,8 @@
   "scripts": {
     "start": "yarn babel-node",
     "test": "yarn jest"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.0"
   }
 }
